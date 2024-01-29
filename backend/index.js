@@ -67,7 +67,7 @@ app.get('/books/:id', async (request, response) => {
 });
 
 //Rout update Book
-app.put('./books/:id', async (request, response) => {
+app.put('/books/:id', async (request, response) => {
     try {
         if (
             !request.body.title ||
@@ -87,9 +87,10 @@ app.put('./books/:id', async (request, response) => {
             return response.status(404).json({ message: 'Book not found' })
         }
     
+        return response.status(200).send({ message: 'Book updated successfully' });    
     } catch (error) {
         console.log(error.message);
-        response.status(500).send({message:error.message });
+        response.status(500).send({ message:error.message });
     }
 });
 
